@@ -89,21 +89,21 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="Grammars\Angle.grxml" />
-    <None Include="Grammars\Area.grxml" />
-    <None Include="Grammars\Convert.grxml" />
-    <None Include="Grammars\Energy.grxml" />
-    <None Include="Grammars\Force.grxml" />
-    <None Include="Grammars\Frequency.grxml" />
-    <None Include="Grammars\Length.grxml" />
-    <None Include="Grammars\Mass.grxml" />
-    <None Include="Grammars\Numbers.grxml" />
-    <None Include="Grammars\Power.grxml" />
-    <None Include="Grammars\Repeat.grxml" />
-    <None Include="Grammars\Speed.grxml" />
-    <None Include="Grammars\Temperature.grxml" />
-    <None Include="Grammars\Time.grxml" />
-    <None Include="Grammars\Volume.grxml" />
+    <Content Include="Grammars\Angle.grxml" />
+    <Content Include="Grammars\Area.grxml" />
+    <Content Include="Grammars\Convert.grxml" />
+    <Content Include="Grammars\Energy.grxml" />
+    <Content Include="Grammars\Force.grxml" />
+    <Content Include="Grammars\Frequency.grxml" />
+    <Content Include="Grammars\Length.grxml" />
+    <Content Include="Grammars\Mass.grxml" />
+    <Content Include="Grammars\Numbers.grxml" />
+    <Content Include="Grammars\Power.grxml" />
+    <Content Include="Grammars\Repeat.grxml" />
+    <Content Include="Grammars\Speed.grxml" />
+    <Content Include="Grammars\Temperature.grxml" />
+    <Content Include="Grammars\Time.grxml" />
+    <Content Include="Grammars\Volume.grxml" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

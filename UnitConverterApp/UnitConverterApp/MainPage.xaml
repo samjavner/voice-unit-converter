@@ -8,6 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel x:Name="SuggestionsPanel" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" TextAlignment="Center">
+                    try “feet in a mile”, “tablespoons to teaspoons”, or “1.68 meters to inches”
+            </TextBlock>
+        </StackPanel>
+        <StackPanel x:Name="ResultsPanel" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="{Binding FromText}" TextAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding EqualsText}" TextAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}"/>
+            <TextBlock Text="{Binding ToText}" TextAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Button x:Name="ConvertButton" Content="Convert" VerticalAlignment="Center" Margin="0,0,0,200" HorizontalAlignment="Center" Click="ConvertButton_Click"/>
     </Grid>
 </Page>
