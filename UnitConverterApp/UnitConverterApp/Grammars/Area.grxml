@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertArea" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertArea" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitArea"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitArea"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitArea"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitArea"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "area"; </tag>
+  </rule>
+
+  <rule id="unitArea">
+    <one-of>
+
+      <!-- square metric -->
+      <item>
+        square terameter
+        <tag> out.singular = "square terameter"; </tag>
+        <tag> out.plural = "square terameters"; </tag>
+        <tag> out.factor = "1000000000000000000000000"; </tag>
+      </item>
+      <item>
+        square gigameter
+        <tag> out.singular = "square gigameter"; </tag>
+        <tag> out.plural = "square gigameters"; </tag>
+        <tag> out.factor = "1000000000000000000"; </tag>
+      </item>
+      <item>
+        square megameter
+        <tag> out.singular = "square megameter"; </tag>
+        <tag> out.plural = "square megameters"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        square kilometer
+        <tag> out.singular = "square kilometer"; </tag>
+        <tag> out.plural = "square kilometers"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        square hectometer
+        <tag> out.singular = "square hectometer"; </tag>
+        <tag> out.plural = "square hectometers"; </tag>
+        <tag> out.factor = "10000"; </tag>
+      </item>
+      <item>
+        square deckameter
+        <tag> out.singular = "square decameter"; </tag>
+        <tag> out.plural = "square decameters"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        square meter
+        <tag> out.singular = "square meter"; </tag>
+        <tag> out.plural = "square meters"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        square decimeter
+        <tag> out.singular = "square decimeter"; </tag>
+        <tag> out.plural = "square decimeters"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        square centimeter
+        <tag> out.singular = "square centimeter"; </tag>
+        <tag> out.plural = "square centimeters"; </tag>
+        <tag> out.factor = "0.0001"; </tag>
+      </item>
+      <item>
+        square millimeter
+        <tag> out.singular = "square millimeter"; </tag>
+        <tag> out.plural = "square millimeters"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        square micrometer
+        <tag> out.singular = "square micrometer"; </tag>
+        <tag> out.plural = "square micrometers"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> square micron </item>
+          <item> square micra </item>
+        </one-of>
+        <tag> out.singular = "square micron"; </tag>
+        <tag> out.plural = "square microns"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+      <item>
+        square nanometer
+        <tag> out.singular = "square nanometer"; </tag>
+        <tag> out.plural = "square nanometers"; </tag>
+        <tag> out.factor = "0.000000000000000001"; </tag>
+      </item>
+      <item>
+        square angstrom
+        <tag> out.singular = "square angstrom"; </tag>
+        <tag> out.plural = "square angstroms"; </tag>
+        <tag> out.factor = "0.00000000000000000001"; </tag>
+      </item>
+      <item>
+        square picometer
+        <tag> out.singular = "square picometer"; </tag>
+        <tag> out.plural = "square picometers"; </tag>
+        <tag> out.factor = "0.000000000000000000000001"; </tag>
+      </item>
+
+      <!-- square imperial/US -->
+      <item>
+        square nautical mile
+        <tag> out.singular = "square nautical mile"; </tag>
+        <tag> out.plural = "square nautical miles"; </tag>
+        <tag> out.factor = "3429904"; </tag>
+      </item>
+      <item>
+        square mile
+        <tag> out.singular = "square mile"; </tag>
+        <tag> out.plural = "square miles"; </tag>
+        <tag> out.factor = "2589988.110336"; </tag>
+      </item>
+      <item>
+        square furlong
+        <tag> out.singular = "square furlong"; </tag>
+        <tag> out.plural = "square furlongs"; </tag>
+        <tag> out.factor = "40468.564224"; </tag>
+      </item>
+      <item>
+        square chain
+        <tag> out.singular = "square chain"; </tag>
+        <tag> out.plural = "square chains"; </tag>
+        <tag> out.factor = "404.68564224"; </tag>
+      </item>
+      <item>
+        square rod
+        <tag> out.singular = "square rod"; </tag>
+        <tag> out.plural = "square rods"; </tag>
+        <tag> out.factor = "25.29285264"; </tag>
+      </item>
+      <item>
+        square fathom
+        <tag> out.singular = "square fathom"; </tag>
+        <tag> out.plural = "square fathoms"; </tag>
+        <tag> out.factor = "3.34450944"; </tag>
+      </item>
+      <item>
+        square yard
+        <tag> out.singular = "square yard"; </tag>
+        <tag> out.plural = "square yards"; </tag>
+        <tag> out.factor = "0.83612736"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> square foot </item>
+          <item> square feet </item>
+        </one-of>
+        <tag> out.singular = "square foot"; </tag>
+        <tag> out.plural = "square feet"; </tag>
+        <tag> out.factor = "0.09290304"; </tag>
+      </item>
+      <item>
+        square link
+        <tag> out.singular = "square link"; </tag>
+        <tag> out.plural = "square links"; </tag>
+        <tag> out.factor = "0.040468564224"; </tag>
+      </item>
+      <item>
+        square hand
+        <tag> out.singular = "square hand"; </tag>
+        <tag> out.plural = "square hands"; </tag>
+        <tag> out.factor = "0.01032256"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> square inch </item>
+          <item> square inches </item>
+        </one-of>
+        <tag> out.singular = "square inch"; </tag>
+        <tag> out.plural = "square inches"; </tag>
+        <tag> out.factor = "0.00064516"; </tag>
+      </item>
+      <item>
+        square pica
+        <tag> out.singular = "square pica"; </tag>
+        <tag> out.plural = "square picas"; </tag>
+        <tag> out.factor = ".000017921111111111111111111111111"; </tag>
+      </item>
+      <item>
+        square point
+        <tag> out.singular = "square point"; </tag>
+        <tag> out.plural = "square points"; </tag>
+        <tag> out.factor = "0.00000012445216049382716049382716049382716049382716049"; </tag>
+      </item>
+      <item>
+        square mil
+        <tag> out.singular = "square mil"; </tag>
+        <tag> out.plural = "square mils"; </tag>
+        <tag> out.factor = "0.00000000064516"; </tag>
+      </item>
+      <item>
+        square thou
+        <tag> out.singular = "square thou"; </tag>
+        <tag> out.plural = "square thous"; </tag>
+        <tag> out.factor = "0.00000000064516"; </tag>
+      </item>
+
+      <!-- square astronomical areas -->
+      <item>
+        square light year
+        <tag> out.singular = "square light year"; </tag>
+        <tag> out.plural = "square light years"; </tag>
+        <tag> out.factor = "89505421074818927300612528640000"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> square astronomical unit </item>
+          <item> square A.U. </item>
+        </one-of>
+        <tag> out.singular = "square astronomical unit"; </tag>
+        <tag> out.plural = "square astronomical units"; </tag>
+        <tag> out.factor = "22379522917973918490000"; </tag>
+      </item>
+      <item>
+        square parsec
+        <tag> out.singular = "square parsec"; </tag>
+        <tag> out.plural = "square parsecs"; </tag>
+        <tag> out.factor = "952140613691841355440486657238228.09182788411088"; </tag>
+      </item>
+
+      <!-- metric -->
+      <item>
+        hectare
+        <tag> out.singular = "hectare"; </tag>
+        <tag> out.plural = "hectares"; </tag>
+        <tag> out.factor = "10000"; </tag>
+      </item>
+      <item>
+        are
+        <tag> out.singular = "are"; </tag>
+        <tag> out.plural = "ares"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+
+      <!-- imperial/US -->
+      <item>
+        acre
+        <tag> out.singular = "acre"; </tag>
+        <tag> out.plural = "acres"; </tag>
+        <tag> out.factor = "4046.8564224"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

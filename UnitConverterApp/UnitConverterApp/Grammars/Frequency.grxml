@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertFrequency" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertFrequency" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitFrequency"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitFrequency"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitFrequency"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitFrequency"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "frequency"; </tag>
+  </rule>
+
+  <rule id="unitFrequency">
+    <one-of>
+
+      <!-- metric frequency -->
+      <item>
+        terahertz
+        <tag> out.singular = "terahertz"; </tag>
+        <tag> out.plural = "terahertz"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        gigahertz
+        <tag> out.singular = "gigahertz"; </tag>
+        <tag> out.plural = "gigahertz"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        megahertz
+        <tag> out.singular = "megahertz"; </tag>
+        <tag> out.plural = "megahertz"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        kilohertz
+        <tag> out.singular = "kilohertz"; </tag>
+        <tag> out.plural = "kilohertz"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectohertz
+        <tag> out.singular = "hectohertz"; </tag>
+        <tag> out.plural = "hectohertz"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckahertz
+        <tag> out.singular = "decahertz"; </tag>
+        <tag> out.plural = "decahertz"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        hertz
+        <tag> out.singular = "hertz"; </tag>
+        <tag> out.plural = "hertz"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        decihertz
+        <tag> out.singular = "decihertz"; </tag>
+        <tag> out.plural = "decihertz"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centihertz
+        <tag> out.singular = "centihertz"; </tag>
+        <tag> out.plural = "centihertz"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        millihertz
+        <tag> out.singular = "millihertz"; </tag>
+        <tag> out.plural = "millihertz"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        microhertz
+        <tag> out.singular = "microhertz"; </tag>
+        <tag> out.plural = "microhertz"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanohertz
+        <tag> out.singular = "nanohertz"; </tag>
+        <tag> out.plural = "nanohertz"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        picohertz
+        <tag> out.singular = "picohertz"; </tag>
+        <tag> out.plural = "picohertz"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+
+      <!-- other -->
+      <item>
+        cycle per second
+        <tag> out.singular = "cycle per second"; </tag>
+        <tag> out.plural = "cycles per second"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        cycle per minute
+        <tag> out.singular = "cycle per minute"; </tag>
+        <tag> out.plural = "cycles per minute"; </tag>
+        <tag> out.factor = "0.016666666666666666666666666666666666667"; </tag>
+      </item>
+      
+      <!-- angular frequency -->
+      <item>
+        revolution per second
+        <tag> out.singular = "revolution per second"; </tag>
+        <tag> out.plural = "revolutions per second"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> revolution per minute </item>
+          <item> R.P.M. </item>
+        </one-of>
+        <tag> out.singular = "revolution per minute"; </tag>
+        <tag> out.plural = "revolutions per minute"; </tag>
+        <tag> out.factor = "0.016666666666666666666666666666666666667"; </tag>
+      </item>
+      <item>
+        radian per second
+        <tag> out.singular = "radian per second"; </tag>
+        <tag> out.plural = "radians per second"; </tag>
+        <tag> out.factor = "0.15915494309189533576888376337251436203445964574045644874767"; </tag>
+      </item>
+      <item>
+        degree per second
+        <tag> out.singular = "degree per second"; </tag>
+        <tag> out.plural = "degrees per second"; </tag>
+        <tag> out.factor = "0.002777777777777777777777777777777777778"; </tag>
+      </item>
+
+      <!-- metric radioactivity -->
+      <item>
+        terabecquerel
+        <tag> out.singular = "terabecquerel"; </tag>
+        <tag> out.plural = "terabecquerels"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        gigabecquerel
+        <tag> out.singular = "gigabecquerel"; </tag>
+        <tag> out.plural = "gigabecquerels"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        megabecquerel
+        <tag> out.singular = "megabecquerel"; </tag>
+        <tag> out.plural = "megabecquerels"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        kilobecquerel
+        <tag> out.singular = "kilobecquerel"; </tag>
+        <tag> out.plural = "kilobecquerels"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectobecquerel
+        <tag> out.singular = "hectobecquerel"; </tag>
+        <tag> out.plural = "hectobecquerels"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckabecquerel
+        <tag> out.singular = "decabecquerel"; </tag>
+        <tag> out.plural = "decabecquerels"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        becquerel
+        <tag> out.singular = "becquerel"; </tag>
+        <tag> out.plural = "becquerels"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        decibecquerel
+        <tag> out.singular = "decibecquerel"; </tag>
+        <tag> out.plural = "decibecquerels"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centibecquerel
+        <tag> out.singular = "centibecquerel"; </tag>
+        <tag> out.plural = "centibecquerels"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        millibecquerel
+        <tag> out.singular = "millibecquerel"; </tag>
+        <tag> out.plural = "millibecquerels"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        microbecquerel
+        <tag> out.singular = "microbecquerel"; </tag>
+        <tag> out.plural = "microbecquerels"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanobecquerel
+        <tag> out.singular = "nanobecquerel"; </tag>
+        <tag> out.plural = "nanobecquerels"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        picobecquerel
+        <tag> out.singular = "picobecquerel"; </tag>
+        <tag> out.plural = "picobecquerels"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+      
+      <!-- other radioactivity -->
+      <item>
+        kilocurie
+        <tag> out.singular = "kilocurie"; </tag>
+        <tag> out.plural = "kilocuries"; </tag>
+        <tag> out.factor = "37000000000000"; </tag>
+      </item>
+      <item>
+        hectocurie
+        <tag> out.singular = "hectocurie"; </tag>
+        <tag> out.plural = "hectocuries"; </tag>
+        <tag> out.factor = "3700000000000"; </tag>
+      </item>
+      <item>
+        deckacurie
+        <tag> out.singular = "decacurie"; </tag>
+        <tag> out.plural = "decacuries"; </tag>
+        <tag> out.factor = "370000000000"; </tag>
+      </item>
+      <item>
+        curie
+        <tag> out.singular = "curie"; </tag>
+        <tag> out.plural = "curies"; </tag>
+        <tag> out.factor = "37000000000"; </tag>
+      </item>
+      <item>
+        decicurie
+        <tag> out.singular = "decicurie"; </tag>
+        <tag> out.plural = "decicuries"; </tag>
+        <tag> out.factor = "3700000000"; </tag>
+      </item>
+      <item>
+        centicurie
+        <tag> out.singular = "centicurie"; </tag>
+        <tag> out.plural = "centicuries"; </tag>
+        <tag> out.factor = "370000000"; </tag>
+      </item>
+      <item>
+        millicurie
+        <tag> out.singular = "millicurie"; </tag>
+        <tag> out.plural = "millicuries"; </tag>
+        <tag> out.factor = "37000000"; </tag>
+      </item>
+      <item>
+        microcurie
+        <tag> out.singular = "microcurie"; </tag>
+        <tag> out.plural = "microcuries"; </tag>
+        <tag> out.factor = "37000"; </tag>
+      </item>
+      <item>
+        nanocurie
+        <tag> out.singular = "nanocurie"; </tag>
+        <tag> out.plural = "nanocuries"; </tag>
+        <tag> out.factor = "37"; </tag>
+      </item>
+      <item>
+        picocurie
+        <tag> out.singular = "picocurie"; </tag>
+        <tag> out.plural = "picocuries"; </tag>
+        <tag> out.factor = "0.037"; </tag>
+      </item>
+      <item>
+        rutherford
+        <tag> out.singular = "rutherford"; </tag>
+        <tag> out.plural = "rutherfords"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

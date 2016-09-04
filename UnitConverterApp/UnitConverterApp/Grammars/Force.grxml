@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertForce" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertForce" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitForce"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitForce"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitForce"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitForce"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "force"; </tag>
+  </rule>
+
+  <rule id="unitForce">
+    <one-of>
+
+      <!-- metric -->
+      <item>
+        teranewton
+        <tag> out.singular = "teranewton"; </tag>
+        <tag> out.plural = "teranewtons"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        giganewton
+        <tag> out.singular = "giganewton"; </tag>
+        <tag> out.plural = "giganewtons"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        meganewton
+        <tag> out.singular = "meganewton"; </tag>
+        <tag> out.plural = "meganewtons"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        kilonewton
+        <tag> out.singular = "kilonewton"; </tag>
+        <tag> out.plural = "kilonewtons"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectonewton
+        <tag> out.singular = "hectonewton"; </tag>
+        <tag> out.plural = "hectonewtons"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckanewton
+        <tag> out.singular = "decanewton"; </tag>
+        <tag> out.plural = "decanewtons"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        newton
+        <tag> out.singular = "newton"; </tag>
+        <tag> out.plural = "newtons"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        decinewton
+        <tag> out.singular = "decinewton"; </tag>
+        <tag> out.plural = "decinewtons"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centinewton
+        <tag> out.singular = "centinewton"; </tag>
+        <tag> out.plural = "centinewtons"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        millinewton
+        <tag> out.singular = "millinewton"; </tag>
+        <tag> out.plural = "millinewtons"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        micronewton
+        <tag> out.singular = "micronewton"; </tag>
+        <tag> out.plural = "micronewtons"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanonewton
+        <tag> out.singular = "nanonewton"; </tag>
+        <tag> out.plural = "nanonewtons"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        piconewton
+        <tag> out.singular = "piconewton"; </tag>
+        <tag> out.plural = "piconewtons"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+      <item>
+        dyne
+        <tag> out.singular = "dyne"; </tag>
+        <tag> out.plural = "dynes"; </tag>
+        <tag> out.factor = "0.00001"; </tag>
+      </item>
+
+      <!-- other -->
+      <item>
+        <one-of>
+          <item> pound force </item>
+          <item> pound </item>
+        </one-of>
+        <tag> out.singular = "pound-force"; </tag>
+        <tag> out.plural = "pounds-force"; </tag>
+        <tag> out.factor = "4.4482216152605"; </tag>
+      </item>
+      <item>
+        poundal
+        <tag> out.singular = "poundal"; </tag>
+        <tag> out.plural = "poundals"; </tag>
+        <tag> out.factor = "0.138254954376"; </tag>
+      </item>
+      <item>
+        kilogram force
+        <tag> out.singular = "kilogram-force"; </tag>
+        <tag> out.plural = "kilograms-force"; </tag>
+        <tag> out.factor = "9.80665"; </tag>
+      </item>
+      <item>
+        kilopond
+        <tag> out.singular = "kilopond"; </tag>
+        <tag> out.plural = "kiloponds"; </tag>
+        <tag> out.factor = "9.80665"; </tag>
+      </item>
+      <item>
+        gram force
+        <tag> out.singular = "gram-force"; </tag>
+        <tag> out.plural = "grams-force"; </tag>
+        <tag> out.factor = "0.00980665"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

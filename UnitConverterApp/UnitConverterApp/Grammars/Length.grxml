@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertLength" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertLength" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitLength"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitLength"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitLength"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitLength"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "length"; </tag>
+  </rule>
+
+  <rule id="unitLength">
+    <one-of>
+
+      <!-- metric -->
+      <item>
+        terameter
+        <tag> out.singular = "terameter"; </tag>
+        <tag> out.plural = "terameters"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        gigameter
+        <tag> out.singular = "gigameter"; </tag>
+        <tag> out.plural = "gigameters"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        megameter
+        <tag> out.singular = "megameter"; </tag>
+        <tag> out.plural = "megameters"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        kilometer
+        <tag> out.singular = "kilometer"; </tag>
+        <tag> out.plural = "kilometers"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectometer
+        <tag> out.singular = "hectometer"; </tag>
+        <tag> out.plural = "hectometers"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckameter
+        <tag> out.singular = "decameter"; </tag>
+        <tag> out.plural = "decameters"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        meter
+        <tag> out.singular = "meter"; </tag>
+        <tag> out.plural = "meters"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        decimeter
+        <tag> out.singular = "decimeter"; </tag>
+        <tag> out.plural = "decimeters"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centimeter
+        <tag> out.singular = "centimeter"; </tag>
+        <tag> out.plural = "centimeters"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        millimeter
+        <tag> out.singular = "millimeter"; </tag>
+        <tag> out.plural = "millimeters"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        micrometer
+        <tag> out.singular = "micrometer"; </tag>
+        <tag> out.plural = "micrometers"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> micron </item>
+          <item> micra </item>
+        </one-of>
+        <tag> out.singular = "micron"; </tag>
+        <tag> out.plural = "microns"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanometer
+        <tag> out.singular = "nanometer"; </tag>
+        <tag> out.plural = "nanometers"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        angstrom
+        <tag> out.singular = "angstrom"; </tag>
+        <tag> out.plural = "angstroms"; </tag>
+        <tag> out.factor = "0.0000000001"; </tag>
+      </item>
+      <item>
+        picometer
+        <tag> out.singular = "picometer"; </tag>
+        <tag> out.plural = "picometers"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+
+      <!-- imperial/US -->
+      <item>
+        nautical mile
+        <tag> out.singular = "nautical mile"; </tag>
+        <tag> out.plural = "nautical miles"; </tag>
+        <tag> out.factor = "1852"; </tag>
+      </item>
+      <item>
+        mile
+        <tag> out.singular = "mile"; </tag>
+        <tag> out.plural = "miles"; </tag>
+        <tag> out.factor = "1609.344"; </tag>
+      </item>
+      <item>
+        furlong
+        <tag> out.singular = "furlong"; </tag>
+        <tag> out.plural = "furlongs"; </tag>
+        <tag> out.factor = "201.168"; </tag>
+      </item>
+      <item>
+        chain
+        <tag> out.singular = "chain"; </tag>
+        <tag> out.plural = "chains"; </tag>
+        <tag> out.factor = "20.1168"; </tag>
+      </item>
+      <item>
+        rod
+        <tag> out.singular = "rod"; </tag>
+        <tag> out.plural = "rods"; </tag>
+        <tag> out.factor = "5.0292"; </tag>
+      </item>
+      <item>
+        fathom
+        <tag> out.singular = "fathom"; </tag>
+        <tag> out.plural = "fathoms"; </tag>
+        <tag> out.factor = "1.8288"; </tag>
+      </item>
+      <item>
+        yard
+        <tag> out.singular = "yard"; </tag>
+        <tag> out.plural = "yards"; </tag>
+        <tag> out.factor = "0.9144"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot </item>
+          <item> feet </item>
+        </one-of>
+        <tag> out.singular = "foot"; </tag>
+        <tag> out.plural = "feet"; </tag>
+        <tag> out.factor = "0.3048"; </tag>
+      </item>
+      <item>
+        link
+        <tag> out.singular = "link"; </tag>
+        <tag> out.plural = "links"; </tag>
+        <tag> out.factor = "0.201168"; </tag>
+      </item>
+      <item>
+        hand
+        <tag> out.singular = "hand"; </tag>
+        <tag> out.plural = "hands"; </tag>
+        <tag> out.factor = "0.1016"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> inch </item>
+          <item> inches </item>
+        </one-of>
+        <tag> out.singular = "inch"; </tag>
+        <tag> out.plural = "inches"; </tag>
+        <tag> out.factor = "0.0254"; </tag>
+      </item>
+      <item>
+        pica
+        <tag> out.singular = "pica"; </tag>
+        <tag> out.plural = "picas"; </tag>
+        <tag> out.factor = "0.00423333333333333333333"; </tag>
+      </item>
+      <item>
+        point
+        <tag> out.singular = "point"; </tag>
+        <tag> out.plural = "points"; </tag>
+        <tag> out.factor = "0.00035277777777777777777"; </tag>
+      </item>
+      <item>
+        mil
+        <tag> out.singular = "mil"; </tag>
+        <tag> out.plural = "mils"; </tag>
+        <tag> out.factor = "0.0000254"; </tag>
+      </item>
+      <item>
+        thou
+        <tag> out.singular = "thou"; </tag>
+        <tag> out.plural = "thous"; </tag>
+        <tag> out.factor = "0.0000254"; </tag>
+      </item>
+
+      <!-- astronomical lengths -->
+      <item>
+        light year
+        <tag> out.singular = "light year"; </tag>
+        <tag> out.plural = "light years"; </tag>
+        <tag> out.factor = "9460730472580800"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> astronomical unit </item>
+          <item> A.U. </item>
+        </one-of>
+        <tag> out.singular = "astronomical unit"; </tag>
+        <tag> out.plural = "astronomical units"; </tag>
+        <tag> out.factor = "149597870700"; </tag>
+      </item>
+      <item>
+        parsec
+        <tag> out.singular = "parsec"; </tag>
+        <tag> out.plural = "parsecs"; </tag>
+        <tag> out.factor = "30856775814913672.789139379577964716107319211604"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

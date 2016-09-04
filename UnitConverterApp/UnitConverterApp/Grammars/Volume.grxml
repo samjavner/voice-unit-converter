@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertVolume" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertVolume" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitVolume"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitVolume"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitVolume"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitVolume"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "volume"; </tag>
+  </rule>
+
+  <rule id="unitVolume">
+    <one-of>
+
+      <!-- metric -->
+      <item>
+        teraliter
+        <tag> out.singular = "teraliter"; </tag>
+        <tag> out.plural = "teraliters"; </tag>
+        <tag> out.factor = "1000000000000000"; </tag>
+      </item>
+      <item>
+        gigaliter
+        <tag> out.singular = "gigaliter"; </tag>
+        <tag> out.plural = "gigaliters"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        megaliter
+        <tag> out.singular = "megaliter"; </tag>
+        <tag> out.plural = "megaliters"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        kiloliter
+        <tag> out.singular = "kiloliter"; </tag>
+        <tag> out.plural = "kiloliters"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        hectoliter
+        <tag> out.singular = "hectoliter"; </tag>
+        <tag> out.plural = "hectoliters"; </tag>
+        <tag> out.factor = "100000"; </tag>
+      </item>
+      <item>
+        deckaliter
+        <tag> out.singular = "decaliter"; </tag>
+        <tag> out.plural = "decaliters"; </tag>
+        <tag> out.factor = "10000"; </tag>
+      </item>
+      <item>
+        liter
+        <tag> out.singular = "liter"; </tag>
+        <tag> out.plural = "liters"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        deciliter
+        <tag> out.singular = "deciliter"; </tag>
+        <tag> out.plural = "deciliters"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        centiliter
+        <tag> out.singular = "centiliter"; </tag>
+        <tag> out.plural = "centiliters"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        milliliter
+        <tag> out.singular = "milliliter"; </tag>
+        <tag> out.plural = "milliliters"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        microliter
+        <tag> out.singular = "microliter"; </tag>
+        <tag> out.plural = "microliters"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      
+      <!-- metric cubic length -->
+      <item>
+        cubic kilometer
+        <tag> out.singular = "cubic kilometer"; </tag>
+        <tag> out.plural = "cubic kilometers"; </tag>
+        <tag> out.factor = "1000000000000000"; </tag>
+      </item>
+      <item>
+        cubic meter
+        <tag> out.singular = "cubic meter"; </tag>
+        <tag> out.plural = "cubic meters"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        cubic decimeter
+        <tag> out.singular = "cubic decimeter"; </tag>
+        <tag> out.plural = "cubic decimeters"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        cubic centimeter
+        <tag> out.singular = "cubic centimeter"; </tag>
+        <tag> out.plural = "cubic centimeters"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        cubic millimeter
+        <tag> out.singular = "cubic millimeter"; </tag>
+        <tag> out.plural = "cubic millimeters"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+
+      <!-- imperial/US -->
+      <item>
+        teaspoon
+        <tag> out.singular = "teaspoon"; </tag>
+        <tag> out.plural = "teaspoons"; </tag>
+        <tag> out.factor = "4.92892159375"; </tag>
+      </item>
+      <item>
+        tablespoon
+        <tag> out.singular = "tablespoon"; </tag>
+        <tag> out.plural = "tablespoons"; </tag>
+        <tag> out.factor = "14.78676478125"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> ounce </item>
+          <item> fluid ounce </item>
+        </one-of>
+        <tag> out.singular = "fluid ounce"; </tag>
+        <tag> out.plural = "fluid ounces"; </tag>
+        <tag> out.factor = "29.5735295625"; </tag>
+      </item>
+      <item>
+        cup
+        <tag> out.singular = "cup"; </tag>
+        <tag> out.plural = "cups"; </tag>
+        <tag> out.factor = "236.5882365"; </tag>
+      </item>
+      <item>
+        pint
+        <tag> out.singular = "pint"; </tag>
+        <tag> out.plural = "pints"; </tag>
+        <tag> out.factor = "473.176473"; </tag>
+      </item>
+      <item>
+        quart
+        <tag> out.singular = "quart"; </tag>
+        <tag> out.plural = "quarts"; </tag>
+        <tag> out.factor = "946.352946"; </tag>
+      </item>
+      <item>
+        gallon
+        <tag> out.singular = "gallon"; </tag>
+        <tag> out.plural = "gallons"; </tag>
+        <tag> out.factor = "3785.411784"; </tag>
+      </item>
+      <item>
+        peck
+        <tag> out.singular = "peck"; </tag>
+        <tag> out.plural = "pecks"; </tag>
+        <tag> out.factor = "8809.76754172"; </tag>
+      </item>
+      <item>
+        bushel
+        <tag> out.singular = "bushel"; </tag>
+        <tag> out.plural = "bushels"; </tag>
+        <tag> out.factor = "35239.07016688"; </tag>
+      </item>
+
+      <!-- imperial/US cubic length -->
+      <item>
+        cubic mile
+        <tag> out.singular = "cubic mile"; </tag>
+        <tag> out.plural = "cubic miles"; </tag>
+        <tag> out.factor = "4168181825440579.584"; </tag>
+      </item>
+      <item>
+        cubic yard
+        <tag> out.singular = "cubic yard"; </tag>
+        <tag> out.plural = "cubic yards"; </tag>
+        <tag> out.factor = "764554.857984"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> cubic foot </item>
+          <item> cubic feet </item>
+        </one-of>
+        <tag> out.singular = "cubic foot"; </tag>
+        <tag> out.plural = "cubic feet"; </tag>
+        <tag> out.factor = "28316.846592"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> cubic inch </item>
+          <item> cubic inches </item>
+        </one-of>
+        <tag> out.singular = "cubic inch"; </tag>
+        <tag> out.plural = "cubic inches"; </tag>
+        <tag> out.factor = "16.387064"; </tag>
+      </item>
+
+      <!-- imperial/US area*length -->
+      <item>
+        <one-of>
+          <item> acre foot </item>
+          <item> acre feet </item>
+        </one-of>
+        <tag> out.singular = "acre-foot"; </tag>
+        <tag> out.plural = "acre-feet"; </tag>
+        <tag> out.factor = "1233481837.54752"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> acre inch </item>
+          <item> acre inches </item>
+        </one-of>
+        <tag> out.singular = "acre-inch"; </tag>
+        <tag> out.plural = "acre-inches"; </tag>
+        <tag> out.factor = "102790153.12896"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

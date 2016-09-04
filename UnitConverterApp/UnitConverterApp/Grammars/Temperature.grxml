@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertTemperature" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertTemperature" scope="public">
+    <item>
+      <tag> out.number = 1; </tag>
+      <item repeat="0-1">
+        <ruleref uri="numbers.grxml#number"/>
+        <tag> out.number = rules.latest().number; </tag>
+      </item>
+      <ruleref uri="#unitTemperature"/>
+      <tag> out.singularFrom = rules.latest().singular; </tag>
+      <tag> out.pluralFrom = rules.latest().plural; </tag>
+      <tag> out.factorFrom = rules.latest().factor; </tag>
+      <tag> out.offsetFrom = rules.latest().offset; </tag>
+      <item> to </item>
+      <ruleref uri="#unitTemperature"/>
+      <tag> out.singularTo = rules.latest().singular; </tag>
+      <tag> out.pluralTo = rules.latest().plural; </tag>
+      <tag> out.factorTo = rules.latest().factor; </tag>
+      <tag> out.offsetTo = rules.latest().offset; </tag>
+    </item>
+    <tag> out.conversion = "temperature"; </tag>
+  </rule>
+
+  <rule id="convertTemperatureInterval" scope="public">
+    <item>
+      <ruleref uri="#unitTemperature"/>
+      <tag> out.singularTo = rules.latest().singular; </tag>
+      <tag> out.pluralTo = rules.latest().plural; </tag>
+      <tag> out.factorTo = rules.latest().factor; </tag>
+      <item> in </item>
+      <tag> out.number = "1"; </tag>
+      <one-of>
+        <item>
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <item> a </item>
+        <item> an </item>
+      </one-of>
+      <ruleref uri="#unitTemperature"/>
+      <tag> out.singularFrom = rules.latest().singular; </tag>
+      <tag> out.pluralFrom = rules.latest().plural; </tag>
+      <tag> out.factorFrom = rules.latest().factor; </tag>
+    </item>
+    <tag> out.conversion = "temperatureInterval"; </tag>
+  </rule>
+  
+  <rule id="unitTemperature">
+    <one-of>
+
+      <item>
+        <one-of>
+          <item> Kelvin </item>
+          <item> degrees Kelvin </item>
+        </one-of>
+        <tag> out.singular = "kelvin"; </tag>
+        <tag> out.plural = "kelvins"; </tag>
+        <tag> out.factor = "1"; </tag>
+        <tag> out.offset = "0"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> Celsius </item>
+          <item> centigrade </item>
+          <item> degrees Celsius </item>
+          <item> degrees centigrade </item>
+        </one-of>
+        <tag> out.singular = "degree Celsius"; </tag>
+        <tag> out.plural = "degrees Celsius"; </tag>
+        <tag> out.factor = "1"; </tag>
+        <tag> out.offset = "273.15"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> Rankine </item>
+          <item> degrees Rankine </item>
+        </one-of>
+        <tag> out.singular = "degree Rankine"; </tag>
+        <tag> out.plural = "degrees Rankine"; </tag>
+        <tag> out.factor = "1.8"; </tag>
+        <tag> out.offset = "0"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> Fahrenheit </item>
+          <item> degrees Fahrenheit </item>
+        </one-of>
+        <tag> out.singular = "degree Fahrenheit"; </tag>
+        <tag> out.plural = "degrees Fahrenheit"; </tag>
+        <tag> out.factor = "1.8"; </tag>
+        <tag> out.offset = "459.67"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

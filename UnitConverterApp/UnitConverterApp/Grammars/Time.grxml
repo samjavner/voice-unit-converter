@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertTime" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+ 
+  <rule id="convertTime" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitTime"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitTime"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitTime"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitTime"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "time"; </tag>
+  </rule>
+
+  <rule id="unitTime">
+    <one-of>
+      
+      <!-- second and metric prefixes -->
+      <item>
+        second
+        <tag> out.singular = "second"; </tag>
+        <tag> out.plural = "seconds"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        millisecond
+        <tag> out.singular = "millisecond"; </tag>
+        <tag> out.plural = "milliseconds"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        microsecond
+        <tag> out.singular = "microsecond"; </tag>
+        <tag> out.plural = "microseconds"; </tag>
+        <tag> out.factor = "0.000001"; </tag>nano
+      </item>
+      <item>
+        nanosecond
+        <tag> out.singular = "nanosecond"; </tag>
+        <tag> out.plural = "nanoseconds"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>nano
+      </item>
+      <item>
+        picosecond
+        <tag> out.singular = "picosecond"; </tag>
+        <tag> out.plural = "picoseconds"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>nano
+      </item>
+      
+      <!-- other units -->
+      <item>
+        century
+        <tag> out.singular = "century"; </tag>
+        <tag> out.plural = "centuries"; </tag>
+        <tag> out.factor = "3155760000"; </tag>
+      </item>
+      <item>
+        decade
+        <tag> out.singular = "decade"; </tag>
+        <tag> out.plural = "decades"; </tag>
+        <tag> out.factor = "315576000"; </tag>
+      </item>
+      <item>
+        year
+        <tag> out.singular = "year"; </tag>
+        <tag> out.plural = "years"; </tag>
+        <tag> out.factor = "31557600"; </tag>
+      </item>
+      <item>
+        month
+        <tag> out.singular = "month"; </tag>
+        <tag> out.plural = "months"; </tag>
+        <tag> out.factor = "2629800"; </tag>
+      </item>
+      <item>
+        fortnight
+        <tag> out.singular = "fortnight"; </tag>
+        <tag> out.plural = "fortnights"; </tag>
+        <tag> out.factor = "1209600"; </tag>
+      </item>
+      <item>
+        week
+        <tag> out.singular = "week"; </tag>
+        <tag> out.plural = "weeks"; </tag>
+        <tag> out.factor = "604800"; </tag>
+      </item>
+      <item>
+        day
+        <tag> out.singular = "day"; </tag>
+        <tag> out.plural = "days"; </tag>
+        <tag> out.factor = "86400"; </tag>
+      </item>
+      <item>
+        hour
+        <tag> out.singular = "hour"; </tag>
+        <tag> out.plural = "hours"; </tag>
+        <tag> out.factor = "3600"; </tag>
+      </item>
+      <item>
+        minute
+        <tag> out.singular = "minute"; </tag>
+        <tag> out.plural = "minutes"; </tag>
+        <tag> out.factor = "60"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

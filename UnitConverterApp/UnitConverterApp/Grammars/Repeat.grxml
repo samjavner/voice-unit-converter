@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="repeat" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="repeat" scope="public">
+    <one-of>
+      <item>
+        <ruleref uri="Convert.grxml#rootRule"/>
+        <tag> out = rules.latest(); </tag>
+      </item>
+      <item>
+        <item repeat="0-1"> make that </item>
+        <ruleref uri="Numbers.grxml#number"/>
+        <tag> out.number = rules.latest().number; </tag>
+        <tag> out.isRepeat = "true"; </tag>
+      </item>
+    </one-of>
+  </rule>
+    
+</grammar>

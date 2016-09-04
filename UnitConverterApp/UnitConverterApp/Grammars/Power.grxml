@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertPower" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertPower" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitPower"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitPower"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitPower"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitPower"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "power"; </tag>
+  </rule>
+
+  <rule id="unitPower">
+    <one-of>
+
+      <!-- metric -->
+      <item>
+        terawatt
+        <tag> out.singular = "terawatt"; </tag>
+        <tag> out.plural = "terawatts"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        gigawatt
+        <tag> out.singular = "gigawatt"; </tag>
+        <tag> out.plural = "gigawatts"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        megawatt
+        <tag> out.singular = "megawatt"; </tag>
+        <tag> out.plural = "megawatts"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        kilowatt
+        <tag> out.singular = "kilowatt"; </tag>
+        <tag> out.plural = "kilowatts"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectowatt
+        <tag> out.singular = "hectowatt"; </tag>
+        <tag> out.plural = "hectowatts"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckawatt
+        <tag> out.singular = "decawatt"; </tag>
+        <tag> out.plural = "decawatts"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        watt
+        <tag> out.singular = "watt"; </tag>
+        <tag> out.plural = "watts"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        deciwatt
+        <tag> out.singular = "deciwatt"; </tag>
+        <tag> out.plural = "deciwatts"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centiwatt
+        <tag> out.singular = "centiwatt"; </tag>
+        <tag> out.plural = "centiwatts"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        milliwatt
+        <tag> out.singular = "milliwatt"; </tag>
+        <tag> out.plural = "milliwatts"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        microwatt
+        <tag> out.singular = "microwatt"; </tag>
+        <tag> out.plural = "microwatts"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanowatt
+        <tag> out.singular = "nanowatt"; </tag>
+        <tag> out.plural = "nanowatts"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        picowatt
+        <tag> out.singular = "picowatt"; </tag>
+        <tag> out.plural = "picowatts"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+
+      <!-- metric units of energy per time -->
+      <item>
+        joule per second
+        <tag> out.singular = "joule per second"; </tag>
+        <tag> out.plural = "joules per second"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        joules per minute
+        <tag> out.singular = "joule per minute"; </tag>
+        <tag> out.plural = "joules per minute"; </tag>
+        <tag> out.factor = "0.01666666666666666666666666667"; </tag>
+      </item>
+      <item>
+        joules per hour
+        <tag> out.singular = "joule per hour"; </tag>
+        <tag> out.plural = "joules per hour"; </tag>
+        <tag> out.factor = "0.00027777777777777777777777778"; </tag>
+      </item>
+      
+      <!-- imperial/US -->
+      <item>
+        horsepower
+        <tag> out.singular = "horsepower"; </tag>
+        <tag> out.plural = "horsepower"; </tag>
+        <tag> out.factor = "745.69987158227022"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot pound force per second </item>
+          <item> foot pound per second </item>
+          <item> feet pound force per second </item>
+          <item> feet pound per second </item>
+        </one-of>
+        <tag> out.singular = "foot-pound-force per second "; </tag>
+        <tag> out.plural = "foot-pound-force per second "; </tag>
+        <tag> out.factor = "1.3558179483314004"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot pound force per minute </item>
+          <item> foot pound per minute </item>
+          <item> feet pound force per minute </item>
+          <item> feet pound per minute </item>
+        </one-of>
+        <tag> out.singular = "foot-pound-force per minute "; </tag>
+        <tag> out.plural = "foot-pound-force per minute "; </tag>
+        <tag> out.factor = "0.02259696580552334"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot pound force per hour </item>
+          <item> foot pound per hour </item>
+          <item> feet pound force per hour </item>
+          <item> feet pound per hour </item>
+        </one-of>
+        <tag> out.singular = "foot-pound-force per hour "; </tag>
+        <tag> out.plural = "feet-pound-force per hour "; </tag>
+        <tag> out.factor = "0.00037661609675872233333333333333333"; </tag>
+      </item>
+      <item>
+        calorie per second
+        <tag> out.singular = "calorie per second"; </tag>
+        <tag> out.plural = "calories per second"; </tag>
+        <tag> out.factor = "4.184"; </tag>
+      </item>
+      <item>
+        calorie per minute
+        <tag> out.singular = "calorie per minute"; </tag>
+        <tag> out.plural = "calories per minute"; </tag>
+        <tag> out.factor = "0.06973333333333333333333333333333"; </tag>
+      </item>
+      <item>
+        calorie per hour
+        <tag> out.singular = "calories per hour"; </tag>
+        <tag> out.plural = "calories per hour"; </tag>
+        <tag> out.factor = "0.00116222222222222222222222222222"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> british thermal units per second </item>
+          <item> B.T.U. per second </item>
+        </one-of>
+        <tag> out.singular = "BTU per second"; </tag>
+        <tag> out.plural = "BTUs per second"; </tag>
+        <tag> out.factor = "1055.05585262"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> british thermal units per minute </item>
+          <item> B.T.U. per minute </item>
+        </one-of>
+        <tag> out.singular = "BTU per minute"; </tag>
+        <tag> out.plural = "BTUs per minute"; </tag>
+        <tag> out.factor = "17.584264210333333333333333333333"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> british thermal units per hour </item>
+          <item> B.T.U. per hour </item>
+        </one-of>
+        <tag> out.singular = "BTU per hour"; </tag>
+        <tag> out.plural = "BTUs per hour"; </tag>
+        <tag> out.factor = "0.29307107017222222222222222222222"; </tag>
+      </item>
+      
+      <!-- interesting to human beings -->
+      <item>
+        kilocalorie per day
+        <tag> out.singular = "kilocalorie per day"; </tag>
+        <tag> out.plural = "kilocalories per day"; </tag>
+        <tag> out.factor = "0.04842592592592592592592592592593"; </tag>
+      </item>
+      <item>
+        kilojoule per day
+        <tag> out.singular = "kilojoule per day"; </tag>
+        <tag> out.plural = "kilojoules per day"; </tag>
+        <tag> out.factor = "0.01157407407407407407407407407407"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

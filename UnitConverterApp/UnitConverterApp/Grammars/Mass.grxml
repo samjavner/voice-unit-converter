@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertMass" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="convertMass" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitMass"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitMass"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitMass"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitMass"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "mass"; </tag>
+  </rule>
+
+  <rule id="unitMass">
+    <one-of>
+
+      <!-- metric -->
+      <item>
+        teragram
+        <tag> out.singular = "teragram"; </tag>
+        <tag> out.plural = "teragrams"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        gigagram
+        <tag> out.singular = "gigagram"; </tag>
+        <tag> out.plural = "gigagrams"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        megagram
+        <tag> out.singular = "megagram"; </tag>
+        <tag> out.plural = "megagrams"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        kilogram
+        <tag> out.singular = "kilogram"; </tag>
+        <tag> out.plural = "kilograms"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectogram
+        <tag> out.singular = "hectogram"; </tag>
+        <tag> out.plural = "hectograms"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckagram
+        <tag> out.singular = "decagram"; </tag>
+        <tag> out.plural = "decagrams"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        gram
+        <tag> out.singular = "gram"; </tag>
+        <tag> out.plural = "grams"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        decigram
+        <tag> out.singular = "decigram"; </tag>
+        <tag> out.plural = "decigrams"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centigram
+        <tag> out.singular = "centigram"; </tag>
+        <tag> out.plural = "centigrams"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        milligram
+        <tag> out.singular = "milligram"; </tag>
+        <tag> out.plural = "milligrams"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        microgram
+        <tag> out.singular = "microgram"; </tag>
+        <tag> out.plural = "micrograms"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanogram
+        <tag> out.singular = "nanogram"; </tag>
+        <tag> out.plural = "nanograms"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        picogram
+        <tag> out.singular = "picogram"; </tag>
+        <tag> out.plural = "picograms"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+      <item>
+        metric ton
+        <tag> out.singular = "metric ton"; </tag>
+        <tag> out.plural = "metric tons"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        carat
+        <tag> out.singular = "carat"; </tag>
+        <tag> out.plural = "carats"; </tag>
+        <tag> out.factor = "0.2"; </tag>
+      </item>
+
+      <!-- imperial/US -->
+      <item>
+        long ton
+        <tag> out.singular = "long ton"; </tag>
+        <tag> out.plural = "long tons"; </tag>
+        <tag> out.factor = "1016046.9088"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> ton </item>
+          <item> short ton </item>
+        </one-of>
+        <tag> out.singular = "short ton"; </tag>
+        <tag> out.plural = "short tons"; </tag>
+        <tag> out.factor = "907184.74"; </tag>
+      </item>
+      <item>
+        stone
+        <tag> out.singular = "stone"; </tag>
+        <tag> out.plural = "stone"; </tag>
+        <tag> out.factor = "6350.29318"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> pound </item>
+          <item> pound mass </item>
+        </one-of>
+        <tag> out.singular = "pound"; </tag>
+        <tag> out.plural = "pounds"; </tag>
+        <tag> out.factor = "453.59237"; </tag>
+      </item>
+      <item>
+        troy pound
+        <tag> out.singular = "troy pound"; </tag>
+        <tag> out.plural = "troy pounds"; </tag>
+        <tag> out.factor = "373.2417216"; </tag>
+      </item>
+      <item>
+        troy ounce
+        <tag> out.singular = "troy ounce"; </tag>
+        <tag> out.plural = "troy ounces"; </tag>
+        <tag> out.factor = "31.1034768"; </tag>
+      </item>
+      <item>
+        ounce
+        <tag> out.singular = "ounce"; </tag>
+        <tag> out.plural = "ounces"; </tag>
+        <tag> out.factor = "28.349523125"; </tag>
+      </item>
+      <item>
+        grain
+        <tag> out.singular = "grain"; </tag>
+        <tag> out.plural = "grains"; </tag>
+        <tag> out.factor = "0.06479891"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>

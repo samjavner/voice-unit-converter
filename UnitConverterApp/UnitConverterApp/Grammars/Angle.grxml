@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertAngle" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+ 
+  <rule id="convertAngle" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitAngle"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitAngle"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitAngle"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitAngle"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "angle"; </tag>
+  </rule>
+
+  <rule id="unitAngle">
+    <one-of>
+      <item>
+        turn
+        <tag> out.singular = "turn"; </tag>
+        <tag> out.plural = "turns"; </tag>
+        <tag> out.factor = "360"; </tag>
+      </item>
+      <item>
+        revolution
+        <tag> out.singular = "revolution"; </tag>
+        <tag> out.plural = "revolutions"; </tag>
+        <tag> out.factor = "360"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> circle </item>
+          <item> full circle </item>
+        </one-of>
+        <tag> out.singular = "full circle"; </tag>
+        <tag> out.plural = "full circles"; </tag>
+        <tag> out.factor = "360"; </tag>
+      </item>
+      <item>
+        radian
+        <tag> out.singular = "radian"; </tag>
+        <tag> out.plural = "radians"; </tag>
+        <tag> out.factor = "57.295779513082320876798154814105170332405472466564321"; </tag>
+      </item>
+      <item>
+        degree
+        <tag> out.singular = "degree"; </tag>
+        <tag> out.plural = "degrees"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        gradian
+        <tag> out.singular = "gradian"; </tag>
+        <tag> out.plural = "gradians"; </tag>
+        <tag> out.factor = "0.9"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> arc minute </item>
+          <item> minute of arc </item>
+        </one-of>
+        <tag> out.singular = "arc minute"; </tag>
+        <tag> out.plural = "arc minutes"; </tag>
+        <tag> out.factor = "0.0166666666666666666666666666666666666666666666666667"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> arc seconds </item>
+          <item> seconds of arc </item>
+        </one-of>
+        <tag> out.singular = "arc second"; </tag>
+        <tag> out.plural = "arc seconds"; </tag>
+        <tag> out.factor = "0.0002777777777777777777777777777777777777777777777778"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+</grammar>

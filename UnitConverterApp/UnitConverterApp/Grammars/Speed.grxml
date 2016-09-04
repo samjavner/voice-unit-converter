@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-US" root="convertSpeed" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+ 
+  <rule id="convertSpeed" scope="public">
+    <one-of>
+      <item>
+        <tag> out.number = 1; </tag>
+        <item repeat="0-1">
+          <ruleref uri="numbers.grxml#number"/>
+          <tag> out.number = rules.latest().number; </tag>
+        </item>
+        <ruleref uri="#unitSpeed"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+        <item> to </item>
+        <ruleref uri="#unitSpeed"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+      </item>
+      <item>
+        <ruleref uri="#unitSpeed"/>
+        <tag> out.singularTo = rules.latest().singular; </tag>
+        <tag> out.pluralTo = rules.latest().plural; </tag>
+        <tag> out.factorTo = rules.latest().factor; </tag>
+        <item> in </item>
+        <tag> out.number = "1"; </tag>
+        <one-of>
+          <item>
+            <ruleref uri="numbers.grxml#number"/>
+            <tag> out.number = rules.latest().number; </tag>
+          </item>
+          <item> a </item>
+          <item> an </item>
+        </one-of>
+        <ruleref uri="#unitSpeed"/>
+        <tag> out.singularFrom = rules.latest().singular; </tag>
+        <tag> out.pluralFrom = rules.latest().plural; </tag>
+        <tag> out.factorFrom = rules.latest().factor; </tag>
+      </item>
+    </one-of>
+    <tag> out.conversion = "speed"; </tag>
+  </rule>
+
+  <rule id="unitSpeed">
+    <one-of>
+      <!-- use per hour as base instead of per second so that we're multiplying by 60 instead of dividing, so factors are precise -->
+
+      <!-- metric per hour -->
+      <item>
+        terameter per hour
+        <tag> out.singular = "terameter per hour"; </tag>
+        <tag> out.plural = "terameters per hour"; </tag>
+        <tag> out.factor = "1000000000000"; </tag>
+      </item>
+      <item>
+        gigameter per hour
+        <tag> out.singular = "gigameter per hour"; </tag>
+        <tag> out.plural = "gigameters per hour"; </tag>
+        <tag> out.factor = "1000000000"; </tag>
+      </item>
+      <item>
+        megameter per hour
+        <tag> out.singular = "megameter per hour"; </tag>
+        <tag> out.plural = "megameters per hour"; </tag>
+        <tag> out.factor = "1000000"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> kilometer per hour </item>
+          <item> K.P.H. </item>
+        </one-of>
+        <tag> out.singular = "kilometer per hour"; </tag>
+        <tag> out.plural = "kilometers per hour"; </tag>
+        <tag> out.factor = "1000"; </tag>
+      </item>
+      <item>
+        hectometer per hour
+        <tag> out.singular = "hectometer per hour"; </tag>
+        <tag> out.plural = "hectometers per hour"; </tag>
+        <tag> out.factor = "100"; </tag>
+      </item>
+      <item>
+        deckameter per hour
+        <tag> out.singular = "decameter per hour"; </tag>
+        <tag> out.plural = "decameters per hour"; </tag>
+        <tag> out.factor = "10"; </tag>
+      </item>
+      <item>
+        meter per hour
+        <tag> out.singular = "meter per hour"; </tag>
+        <tag> out.plural = "meters per hour"; </tag>
+        <tag> out.factor = "1"; </tag>
+      </item>
+      <item>
+        decimeter per hour
+        <tag> out.singular = "decimeter per hour"; </tag>
+        <tag> out.plural = "decimeters per hour"; </tag>
+        <tag> out.factor = "0.1"; </tag>
+      </item>
+      <item>
+        centimeter per hour
+        <tag> out.singular = "centimeter per hour"; </tag>
+        <tag> out.plural = "centimeters per hour"; </tag>
+        <tag> out.factor = "0.01"; </tag>
+      </item>
+      <item>
+        millimeter per hour
+        <tag> out.singular = "millimeter per hour"; </tag>
+        <tag> out.plural = "millimeters per hour"; </tag>
+        <tag> out.factor = "0.001"; </tag>
+      </item>
+      <item>
+        micrometer per hour
+        <tag> out.singular = "micrometer per hour"; </tag>
+        <tag> out.plural = "micrometers per hour"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> micron per hour </item>
+          <item> micra per hour </item>
+        </one-of>
+        <tag> out.singular = "micron per hour"; </tag>
+        <tag> out.plural = "microns per hour"; </tag>
+        <tag> out.factor = "0.000001"; </tag>
+      </item>
+      <item>
+        nanometer per hour
+        <tag> out.singular = "nanometer per hour"; </tag>
+        <tag> out.plural = "nanometers per hour"; </tag>
+        <tag> out.factor = "0.000000001"; </tag>
+      </item>
+      <item>
+        angstrom per hour
+        <tag> out.singular = "angstrom per hour"; </tag>
+        <tag> out.plural = "angstroms per hour"; </tag>
+        <tag> out.factor = "0.0000000001"; </tag>
+      </item>
+      <item>
+        picometer per hour
+        <tag> out.singular = "picometer per hour"; </tag>
+        <tag> out.plural = "picometers per hour"; </tag>
+        <tag> out.factor = "0.000000000001"; </tag>
+      </item>
+      
+      <!-- metric per minute -->
+      <item>
+        terameter per minute
+        <tag> out.singular = "terameter per minute"; </tag>
+        <tag> out.plural = "terameters per minute"; </tag>
+        <tag> out.factor = "60000000000000"; </tag>
+      </item>
+      <item>
+        gigameter per minute
+        <tag> out.singular = "gigameter per minute"; </tag>
+        <tag> out.plural = "gigameters per minute"; </tag>
+        <tag> out.factor = "60000000000"; </tag>
+      </item>
+      <item>
+        megameter per minute
+        <tag> out.singular = "megameter per minute"; </tag>
+        <tag> out.plural = "megameters per minute"; </tag>
+        <tag> out.factor = "60000000"; </tag>
+      </item>
+      <item>
+        kilometer per minute
+        <tag> out.singular = "kilometer per minute"; </tag>
+        <tag> out.plural = "kilometers per minute"; </tag>
+        <tag> out.factor = "60000"; </tag>
+      </item>
+      <item>
+        hectometer per minute
+        <tag> out.singular = "hectometer per minute"; </tag>
+        <tag> out.plural = "hectometers per minute"; </tag>
+        <tag> out.factor = "6000"; </tag>
+      </item>
+      <item>
+        deckameter per minute
+        <tag> out.singular = "decameter per minute"; </tag>
+        <tag> out.plural = "decameters per minute"; </tag>
+        <tag> out.factor = "600"; </tag>
+      </item>
+      <item>
+        meter per minute
+        <tag> out.singular = "meter per minute"; </tag>
+        <tag> out.plural = "meters per minute"; </tag>
+        <tag> out.factor = "60"; </tag>
+      </item>
+      <item>
+        decimeter per minute
+        <tag> out.singular = "decimeter per minute"; </tag>
+        <tag> out.plural = "decimeters per minute"; </tag>
+        <tag> out.factor = "6"; </tag>
+      </item>
+      <item>
+        centimeter per minute
+        <tag> out.singular = "centimeter per minute"; </tag>
+        <tag> out.plural = "centimeters per minute"; </tag>
+        <tag> out.factor = "0.6"; </tag>
+      </item>
+      <item>
+        millimeter per minute
+        <tag> out.singular = "millimeter per minute"; </tag>
+        <tag> out.plural = "millimeters per minute"; </tag>
+        <tag> out.factor = "0.06"; </tag>
+      </item>
+      <item>
+        micrometer per minute
+        <tag> out.singular = "micrometer per minute"; </tag>
+        <tag> out.plural = "micrometers per minute"; </tag>
+        <tag> out.factor = "0.00006"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> micron per minute </item>
+          <item> micra per minute </item>
+        </one-of>
+        <tag> out.singular = "micron per minute"; </tag>
+        <tag> out.plural = "microns per minute"; </tag>
+        <tag> out.factor = "0.00006"; </tag>
+      </item>
+      <item>
+        nanometer per minute
+        <tag> out.singular = "nanometer per minute"; </tag>
+        <tag> out.plural = "nanometers per minute"; </tag>
+        <tag> out.factor = "0.00000006"; </tag>
+      </item>
+      <item>
+        angstrom per minute
+        <tag> out.singular = "angstrom per minute"; </tag>
+        <tag> out.plural = "angstroms per minute"; </tag>
+        <tag> out.factor = "0.000000006"; </tag>
+      </item>
+      <item>
+        picometer per minute
+        <tag> out.singular = "picometer per minute"; </tag>
+        <tag> out.plural = "picometers per minute"; </tag>
+        <tag> out.factor = "0.00000000006"; </tag>
+      </item>
+      
+      <!-- metric per second -->
+      <item>
+        terameter per second
+        <tag> out.singular = "terameter per second"; </tag>
+        <tag> out.plural = "terameters per second"; </tag>
+        <tag> out.factor = "3600000000000000"; </tag>
+      </item>
+      <item>
+        gigameter per second
+        <tag> out.singular = "gigameter per second"; </tag>
+        <tag> out.plural = "gigameters per second"; </tag>
+        <tag> out.factor = "3600000000000"; </tag>
+      </item>
+      <item>
+        megameter per second
+        <tag> out.singular = "megameter per second"; </tag>
+        <tag> out.plural = "megameters per second"; </tag>
+        <tag> out.factor = "3600000000"; </tag>
+      </item>
+      <item>
+        kilometer per second
+        <tag> out.singular = "kilometer per second"; </tag>
+        <tag> out.plural = "kilometers per second"; </tag>
+        <tag> out.factor = "3600000"; </tag>
+      </item>
+      <item>
+        hectometer per second
+        <tag> out.singular = "hectometer per second"; </tag>
+        <tag> out.plural = "hectometers per second"; </tag>
+        <tag> out.factor = "360000"; </tag>
+      </item>
+      <item>
+        deckameter per second
+        <tag> out.singular = "decameter per second"; </tag>
+        <tag> out.plural = "decameters per second"; </tag>
+        <tag> out.factor = "36000"; </tag>
+      </item>
+      <item>
+        meter per second
+        <tag> out.singular = "meter per second"; </tag>
+        <tag> out.plural = "meters per second"; </tag>
+        <tag> out.factor = "3600"; </tag>
+      </item>
+      <item>
+        decimeter per second
+        <tag> out.singular = "decimeter per second"; </tag>
+        <tag> out.plural = "decimeters per second"; </tag>
+        <tag> out.factor = "360"; </tag>
+      </item>
+      <item>
+        centimeter per second
+        <tag> out.singular = "centimeter per second"; </tag>
+        <tag> out.plural = "centimeters per second"; </tag>
+        <tag> out.factor = "36"; </tag>
+      </item>
+      <item>
+        millimeter per second
+        <tag> out.singular = "millimeter per second"; </tag>
+        <tag> out.plural = "millimeters per second"; </tag>
+        <tag> out.factor = "3.6"; </tag>
+      </item>
+      <item>
+        micrometer per second
+        <tag> out.singular = "micrometer per second"; </tag>
+        <tag> out.plural = "micrometers per second"; </tag>
+        <tag> out.factor = "0.0036"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> micron per second </item>
+          <item> micra per second </item>
+        </one-of>
+        <tag> out.singular = "micron per second"; </tag>
+        <tag> out.plural = "microns per second"; </tag>
+        <tag> out.factor = "0.0036"; </tag>
+      </item>
+      <item>
+        nanometer per second
+        <tag> out.singular = "nanometer per second"; </tag>
+        <tag> out.plural = "nanometers per second"; </tag>
+        <tag> out.factor = "0.0000036"; </tag>
+      </item>
+      <item>
+        angstrom per second
+        <tag> out.singular = "angstrom per second"; </tag>
+        <tag> out.plural = "angstroms per second"; </tag>
+        <tag> out.factor = "0.00000036"; </tag>
+      </item>
+      <item>
+        picometer per second
+        <tag> out.singular = "picometer per second"; </tag>
+        <tag> out.plural = "picometers per second"; </tag>
+        <tag> out.factor = "0.0000000036"; </tag>
+      </item>
+      
+      <!-- imperial/US per hour -->
+      <item>
+        knot
+        <tag> out.singular = "knot"; </tag>
+        <tag> out.plural = "knots"; </tag>
+        <tag> out.factor = "1852"; </tag>
+      </item>
+      <item>
+        nautical mile per hour
+        <tag> out.singular = "nautical mile per hour"; </tag>
+        <tag> out.plural = "nautical miles per hour"; </tag>
+        <tag> out.factor = "1852"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> mile per hour </item>
+          <item> M.P.H. </item>
+        </one-of>
+        <tag> out.singular = "mile per hour"; </tag>
+        <tag> out.plural = "miles per hour"; </tag>
+        <tag> out.factor = "1609.344"; </tag>
+      </item>
+      <item>
+        furlong per hour
+        <tag> out.singular = "furlong per hour"; </tag>
+        <tag> out.plural = "furlongs per hour"; </tag>
+        <tag> out.factor = "201.168"; </tag>
+      </item>
+      <item>
+        chain per hour
+        <tag> out.singular = "chain per hour"; </tag>
+        <tag> out.plural = "chains per hour"; </tag>
+        <tag> out.factor = "20.1168"; </tag>
+      </item>
+      <item>
+        rod per hour
+        <tag> out.singular = "rod per hour"; </tag>
+        <tag> out.plural = "rods per hour"; </tag>
+        <tag> out.factor = "5.0292"; </tag>
+      </item>
+      <item>
+        fathom per hour
+        <tag> out.singular = "fathom per hour"; </tag>
+        <tag> out.plural = "fathoms per hour"; </tag>
+        <tag> out.factor = "1.8288"; </tag>
+      </item>
+      <item>
+        yard per hour
+        <tag> out.singular = "yard per hour"; </tag>
+        <tag> out.plural = "yards per hour"; </tag>
+        <tag> out.factor = "0.9144"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot per hour </item>
+          <item> feet per hour </item>
+        </one-of>
+        <tag> out.singular = "foot per hour"; </tag>
+        <tag> out.plural = "feet per hour"; </tag>
+        <tag> out.factor = "0.3048"; </tag>
+      </item>
+      <item>
+        link per hour
+        <tag> out.singular = "link per hour"; </tag>
+        <tag> out.plural = "links per hour"; </tag>
+        <tag> out.factor = "0.201168"; </tag>
+      </item>
+      <item>
+        hand per hour
+        <tag> out.singular = "hand per hour"; </tag>
+        <tag> out.plural = "hands per hour"; </tag>
+        <tag> out.factor = "0.1016"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> inch per hour </item>
+          <item> inches per hour </item>
+        </one-of>
+        <tag> out.singular = "inch per hour"; </tag>
+        <tag> out.plural = "inches per hour"; </tag>
+        <tag> out.factor = "0.0254"; </tag>
+      </item>
+      <item>
+        pica per hour
+        <tag> out.singular = "pica per hour"; </tag>
+        <tag> out.plural = "picas per hour"; </tag>
+        <tag> out.factor = "0.00423333333333333333333"; </tag>
+      </item>
+      <item>
+        point per hour
+        <tag> out.singular = "point per hour"; </tag>
+        <tag> out.plural = "points per hour"; </tag>
+        <tag> out.factor = "0.00035277777777777777778"; </tag>
+      </item>
+      <item>
+        mil per hour
+        <tag> out.singular = "mil per hour"; </tag>
+        <tag> out.plural = "mils per hour"; </tag>
+        <tag> out.factor = "0.0000254"; </tag>
+      </item>
+      <item>
+        thou per hour
+        <tag> out.singular = "thou per hour"; </tag>
+        <tag> out.plural = "thous per hour"; </tag>
+        <tag> out.factor = "0.0000254"; </tag>
+      </item>
+
+      <!-- imperial/US per minute -->
+      <item>
+        nautical mile per minute
+        <tag> out.singular = "nautical mile per minute"; </tag>
+        <tag> out.plural = "nautical miles per minute"; </tag>
+        <tag> out.factor = "111120"; </tag>
+      </item>
+      <item>
+        mile per minute
+        <tag> out.singular = "mile per minute"; </tag>
+        <tag> out.plural = "miles per minute"; </tag>
+        <tag> out.factor = "96560.64"; </tag>
+      </item>
+      <item>
+        furlong per minute
+        <tag> out.singular = "furlong per minute"; </tag>
+        <tag> out.plural = "furlongs per minute"; </tag>
+        <tag> out.factor = "12070.08"; </tag>
+      </item>
+      <item>
+        chain per minute
+        <tag> out.singular = "chain per minute"; </tag>
+        <tag> out.plural = "chains per minute"; </tag>
+        <tag> out.factor = "1207.008"; </tag>
+      </item>
+      <item>
+        rod per minute
+        <tag> out.singular = "rod per minute"; </tag>
+        <tag> out.plural = "rods per minute"; </tag>
+        <tag> out.factor = "301.752"; </tag>
+      </item>
+      <item>
+        fathom per minute
+        <tag> out.singular = "fathom per minute"; </tag>
+        <tag> out.plural = "fathoms per minute"; </tag>
+        <tag> out.factor = "109.728"; </tag>
+      </item>
+      <item>
+        yard per minute
+        <tag> out.singular = "yard per minute"; </tag>
+        <tag> out.plural = "yards per minute"; </tag>
+        <tag> out.factor = "54.864"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot per minute </item>
+          <item> feet per minute </item>
+        </one-of>
+        <tag> out.singular = "foot per minute"; </tag>
+        <tag> out.plural = "feet per minute"; </tag>
+        <tag> out.factor = "18.288"; </tag>
+      </item>
+      <item>
+        link per minute
+        <tag> out.singular = "link per minute"; </tag>
+        <tag> out.plural = "links per minute"; </tag>
+        <tag> out.factor = "12.07008"; </tag>
+      </item>
+      <item>
+        hand per minute
+        <tag> out.singular = "hand per minute"; </tag>
+        <tag> out.plural = "hands per minute"; </tag>
+        <tag> out.factor = "6.096"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> inch per minute </item>
+          <item> inches per minute </item>
+        </one-of>
+        <tag> out.singular = "inch per minute"; </tag>
+        <tag> out.plural = "inches per minute"; </tag>
+        <tag> out.factor = "1.524"; </tag>
+      </item>
+      <item>
+        pica per minute
+        <tag> out.singular = "pica per minute"; </tag>
+        <tag> out.plural = "picas per minute"; </tag>
+        <tag> out.factor = "0.254"; </tag>
+      </item>
+      <item>
+        point per minute
+        <tag> out.singular = "point per minute"; </tag>
+        <tag> out.plural = "points per minute"; </tag>
+        <tag> out.factor = "0.02116666666666666666667"; </tag>
+      </item>
+      <item>
+        mil per minute
+        <tag> out.singular = "mil per minute"; </tag>
+        <tag> out.plural = "mils per minute"; </tag>
+        <tag> out.factor = "0.001524"; </tag>
+      </item>
+      <item>
+        thou per minute
+        <tag> out.singular = "thou per minute"; </tag>
+        <tag> out.plural = "thous per minute"; </tag>
+        <tag> out.factor = "0.001524"; </tag>
+      </item>
+
+      <!-- imperial/US per second -->
+      <item>
+        nautical mile per second
+        <tag> out.singular = "nautical mile per second"; </tag>
+        <tag> out.plural = "nautical miles per second"; </tag>
+        <tag> out.factor = "6667200"; </tag>
+      </item>
+      <item>
+        mile per second
+        <tag> out.singular = "mile per second"; </tag>
+        <tag> out.plural = "miles per second"; </tag>
+        <tag> out.factor = "5793638.4"; </tag>
+      </item>
+      <item>
+        furlong per second
+        <tag> out.singular = "furlong per second"; </tag>
+        <tag> out.plural = "furlongs per second"; </tag>
+        <tag> out.factor = "724204.8"; </tag>
+      </item>
+      <item>
+        chain per second
+        <tag> out.singular = "chain per second"; </tag>
+        <tag> out.plural = "chains per second"; </tag>
+        <tag> out.factor = "72420.48"; </tag>
+      </item>
+      <item>
+        rod per second
+        <tag> out.singular = "rod per second"; </tag>
+        <tag> out.plural = "rods per second"; </tag>
+        <tag> out.factor = "18105.12"; </tag>
+      </item>
+      <item>
+        fathom per second
+        <tag> out.singular = "fathom per second"; </tag>
+        <tag> out.plural = "fathoms per second"; </tag>
+        <tag> out.factor = "6583.68"; </tag>
+      </item>
+      <item>
+        yard per second
+        <tag> out.singular = "yard per second"; </tag>
+        <tag> out.plural = "yards per second"; </tag>
+        <tag> out.factor = "3291.84"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> foot per second </item>
+          <item> feet per second </item>
+        </one-of>
+        <tag> out.singular = "foot per second"; </tag>
+        <tag> out.plural = "feet per second"; </tag>
+        <tag> out.factor = "1097.28"; </tag>
+      </item>
+      <item>
+        link per second
+        <tag> out.singular = "link per second"; </tag>
+        <tag> out.plural = "links per second"; </tag>
+        <tag> out.factor = "724.2048"; </tag>
+      </item>
+      <item>
+        hand per second
+        <tag> out.singular = "hand per second"; </tag>
+        <tag> out.plural = "hands per second"; </tag>
+        <tag> out.factor = "365.76"; </tag>
+      </item>
+      <item>
+        <one-of>
+          <item> inch per second </item>
+          <item> inches per second </item>
+        </one-of>
+        <tag> out.singular = "inch per second"; </tag>
+        <tag> out.plural = "inches per second"; </tag>
+        <tag> out.factor = "91.44"; </tag>
+      </item>
+      <item>
+        pica per second
+        <tag> out.singular = "pica per second"; </tag>
+        <tag> out.plural = "picas per second"; </tag>
+        <tag> out.factor = "15.24"; </tag>
+      </item>
+      <item>
+        point per second
+        <tag> out.singular = "point per second"; </tag>
+        <tag> out.plural = "points per second"; </tag>
+        <tag> out.factor = "1.27"; </tag>
+      </item>
+      <item>
+        mil per second
+        <tag> out.singular = "mil per second"; </tag>
+        <tag> out.plural = "mils per second"; </tag>
+        <tag> out.factor = "0.09144"; </tag>
+      </item>
+      <item>
+        thou per second
+        <tag> out.singular = "thou per second"; </tag>
+        <tag> out.plural = "thous per second"; </tag>
+        <tag> out.factor = "0.09144"; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+</grammar>
